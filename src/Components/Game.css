@@ -1,0 +1,46 @@
+body{
+    background-color: #ccd9de;
+}
+
+.card-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    padding: 1em;
+    width: max-content;
+    margin: 0 auto;
+}
+.card img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.card{
+    padding: 20px;
+    background-color: darkcyan;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: #07c1ff;
+}
+
+.scoreboard{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+    width: 150px;
+    margin: 20px;
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 0.3em;
+    
+}
+
