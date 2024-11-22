@@ -7,12 +7,25 @@ const Game = () => {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  var API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
-  var apiUrl = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(
-    "ai generated dragon"
-  )}&per_page=50`;
+  const [isPhone, setIsPhone] = useState(false);
+  const API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
+  const query = encodeURIComponent("ai generated dragon");
 
   useEffect(() => {
+    const checkIfPhone = () => {
+      setIsPhone(window.innerWidth <= 600);
+    };
+
+    checkIfPhone();
+    window.addEventListener("resize", checkIfPhone);
+
+    return () => window.removeEventListener("resize", checkIfPhone);
+  }, []);
+
+  useEffect(() => {
+    const cardsPerPage = isPhone ? 8 : 12;
+    const apiUrl = `https://pixabay.com/api/?key=${API_KEY}&q=${query}&per_page=${cardsPerPage}`;
+
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +37,7 @@ const Game = () => {
         setCards(shuffleCards(fetchedCards));
       })
       .catch((err) => console.error("Error fetching data:", err));
-  }, []);
+  }, [isPhone, API_KEY]);
 
   const shuffleCards = (cards) => {
     return cards.sort(() => Math.random() - 0.5);
@@ -50,7 +63,7 @@ const Game = () => {
   };
 
   return (
-    <div className="Game">
+    <div className="game">
       <h1>Memory Game</h1>
       <p>
         Click on an image to earn points, but don't click on any more than once!

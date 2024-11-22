@@ -1,46 +1,116 @@
-body{
-    background-color: #ccd9de;
+.game {
+  width: 95vw;
+  margin: 0 auto;
+  padding: 20px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.card-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 1em;
-    padding: 1em;
-    width: max-content;
-    margin: 0 auto;
-}
-.card img{
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
+.game h1 {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.card{
-    padding: 20px;
-    background-color: darkcyan;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 15px;
+.game p {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.card:hover{
-    cursor: pointer;
-    background-color: #07c1ff;
+.card-grid {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.scoreboard{
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.card {
+  padding: 10px;
+  background-color: darkcyan;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.card img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: #07c1ff;
+}
+
+.scoreboard {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+  width: 150px;
+  border: solid 1px black;
+  border-radius: 15px;
+  padding: 0.5em;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .game {
+    padding: 10px 5px;
+  }
+
+  .game h1 {
+    font-size: 1.5rem;
+  }
+
+  .game p {
+    font-size: 0.9rem;
+    padding: 0 2%;
+  }
+
+  .scoreboard {
+    position: fixed;
+    bottom: 20px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: beige;
+  }
+
+  .card {
+    padding: 5px;
+  }
+
+  .card img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .card-grid {
     gap: 0.5em;
-    width: 150px;
-    margin: 20px;
-    border: solid 1px black;
-    border-radius: 15px;
-    padding: 0.3em;
-    
+  }
 }
 
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  body {
+    font-size: 18px;
+  }
+  .scoreboard {
+    position: fixed;
+    bottom: 20px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: beige;
+  }
+}
